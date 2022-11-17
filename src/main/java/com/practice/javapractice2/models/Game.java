@@ -1,9 +1,8 @@
-package com.practice.javapractice2.domain;
+package com.practice.javapractice2.models;
 
 import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
-
 public class Game implements Serializable {
     @Id
     private String id;

@@ -8,11 +8,11 @@
     <h1>This is a game database!</h1>
     <form action="#" th:action="@{/gameSubmission}" method="post" th:object="${game}">
         <label for="title">Title</label>
-        <input type="text" id="title" th:field="*{game.title}">
+        <input type="text" id="title" name="title">
         <label for="genre">Genre</label>
-        <input type="text" id="genre" th:field="*{game.genre}">
+        <input type="text" id="genre" name="genre">
         <button type="submit">Submit</button>
     </form>
-
+    <a th:href="@{/listGames}">View All Games</a>
 </body>
 </html>
