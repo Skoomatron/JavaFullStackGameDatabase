@@ -11,16 +11,18 @@
     <table>
         <thead>
         <tr>
+            <th>Game ID</th>
             <th>Title</th>
             <th>Genre</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="games : ${games}">
+            <td th:text="${games.id}"/>
             <td th:text="${games.title}"/>
             <td th:text="${games.genre}"/>
-            <td><a th:href="@{'/deleteEntry/' + ${games.title}}"/>Delete</td>
-            <td><a th:href="@{'/updateEntry/' + ${games.title}}"/>Update</td>
+            <td><a th:href="@{'/deleteEntry/' + ${games.id}}"/>Delete</td>
+            <td><a th:href="@{'/updateEntry/' + ${games.id}}"/>Update</td>
         </tr>
         </tbody>
     </table>

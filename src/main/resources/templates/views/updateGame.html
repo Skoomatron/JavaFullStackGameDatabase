@@ -5,9 +5,9 @@
     <title>Update Game</title>
 </head>
 <body>
-<form action="#" th:action="@{/submitUpdate}" method="post">
+<form action="#" th:action="@{'/submitUpdate'}" method="post" th:object="${game}">
     <label for="title">Title</label>
-    <input type="text" id="title" name="title"/>
+    <input type="text" id="title" name="title">
     <label for="genre">Genre</label>
     <input type="text" id="genre" name="genre">
     <button type="submit">Submit</button>
