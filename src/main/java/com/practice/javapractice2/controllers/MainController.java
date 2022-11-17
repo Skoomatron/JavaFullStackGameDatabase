@@ -34,9 +34,20 @@ public class MainController {
         return "views/listGames";
     }
 
-    @RequestMapping(value="/deleteEntry", method= RequestMethod.DELETE)
-    public String deleteEntry(@ModelAttribute("game") Game game) {
-
-        return "redirect:/views/listGames";
+    @RequestMapping(value="/deleteEntry/{title}")
+    public String deleteEntry(@PathVariable("title") String title, Model model) {
+        repository.deleteGameByTitle(title);
+        return "redirect:/listGames";
     }
+
+    @PostMapping(value="/updateGame")
+    public String updateEntry() {
+        return "views/updateGame";
+    }
+
+    @RequestMapping(value="/updateEntry/{title}")
+    public String submitUpdate(@PathVariable("title") String title, Model model) {
+
+    }
+
 }

@@ -19,16 +19,8 @@
         <tr th:each="games : ${games}">
             <td th:text="${games.title}"/>
             <td th:text="${games.genre}"/>
-            <td>
-                <form>
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-            </td>
-            <td>
-                <form>
-                    <button type="submit" class="btn btn-danger">Update</button>
-                </form>
-            </td>
+            <td><a th:href="@{'/deleteEntry/' + ${games.title}}"/>Delete</td>
+<!--            <td><a th:href="@{'/updateEntry/' + ${games.title}}"/>Update</td>-->
         </tr>
         </tbody>
     </table>
