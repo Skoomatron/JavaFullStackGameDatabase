@@ -20,7 +20,7 @@
             <td th:text="${games.title}"/>
             <td th:text="${games.genre}"/>
             <td><a th:href="@{'/deleteEntry/' + ${games.title}}"/>Delete</td>
-<!--            <td><a th:href="@{'/updateEntry/' + ${games.title}}"/>Update</td>-->
+            <td><a th:href="@{'/updateEntry/' + ${games.title}}"/>Update</td>
         </tr>
         </tbody>
     </table>

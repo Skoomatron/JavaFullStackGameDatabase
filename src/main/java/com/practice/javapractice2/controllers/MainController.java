@@ -1,5 +1,9 @@
 package com.practice.javapractice2.controllers;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoDatabase;
 import com.practice.javapractice2.models.Game;
 import com.practice.javapractice2.repositories.GameRepository;
 import org.springframework.stereotype.Controller;
@@ -40,14 +44,25 @@ public class MainController {
         return "redirect:/listGames";
     }
 
-    @PostMapping(value="/updateGame")
-    public String updateEntry() {
+    @GetMapping(value="/updateEntry/{title}")
+    public String updateEntry(@PathVariable("title") String title) {
         return "views/updateGame";
     }
 
-    @RequestMapping(value="/updateEntry/{title}")
-    public String submitUpdate(@PathVariable("title") String title, Model model) {
+    @RequestMapping(value="/submitUpdate/{title}")
+    public String submitUpdate(@PathVariable("title") String title) {
+        MongoClient mongo = MongoClients.create("mongodb://127.0.0.1:27017");
+        MongoDatabase db = mongo.getDatabase("game");
 
+        BasicDBObject query = new BasicDBObject();
+        query.put("title", title);
+        BasicDBObject newDoc = new BasicDBObject();
+        newDoc.put("title", "test");
+        BasicDBObject updated = new BasicDBObject();
+        updated.put("$set", newDoc);
+
+        db.getCollection("game").updateOne(query, updated);
+        return "redirect:/listGames";
     }
 
 }
